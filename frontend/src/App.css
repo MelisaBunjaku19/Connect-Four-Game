@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+  background: #222;
+  font-family: 'Press Start 2P', cursive, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  background-color: #222 !important;
+  color: white !important;
+  padding: 2rem !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 900px !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+
+
+.app-container::before,
+.app-container::after {
+  content: '';
+  display: none;
+}
+
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #b5b80e;
+}
+
+.status {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #eee;
+}
+
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 60px);
+  gap: 8px;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background: #0059b3;
+  border-radius: 50%;
+  box-shadow: inset 0 0 6px #003366;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cell:hover {
+  background-color: #2596be;
+}
+
+/* Disc Style */
+.disc {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.7);
+  transform: translateY(-60px);
+  animation: drop 0.5s forwards ease;
+}
+
+.player1 {
+  background: radial-gradient(circle at 20% 30%, #ff0000, #aa0000);
+  box-shadow: 0 0 10px #ff000088;
+}
+
+.player2 {
+  background: radial-gradient(circle at 20% 30%, #ffff00, #aaaa00);
+  box-shadow: 0 0 10px #ffff0088;
+}
+
+.player0 {
+  display: none;
+}
+
+
+.reset-button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  background-color: #b5b80e;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #d4d60c;
+}
+
+
+@keyframes drop {
+  from {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
