@@ -8,7 +8,7 @@
 
 body, html, #root {
   height: 100%;
-  background: #222;
+  background: #222 !important;
   font-family: 'Press Start 2P', cursive, monospace;
   display: flex;
   justify-content: center;
@@ -20,7 +20,8 @@ body, html, #root {
   color: white !important;
   padding: 2rem !important;
   text-align: center !important;
-  width: 100% !important;
+  
+
   max-width: 900px !important;
   box-shadow: none !important;
   border: none !important;
@@ -35,11 +36,6 @@ body, html, #root {
 }
 
 
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #b5b80e;
-}
 
 .status {
   margin-bottom: 1rem;
@@ -54,7 +50,11 @@ body, html, #root {
   gap: 8px;
   background-color: transparent;
   padding: 10px;
+  width: 800px !important;
+
+    
 }
+
 
 .board-row {
   display: flex;
@@ -70,13 +70,14 @@ body, html, #root {
   box-shadow: inset 0 0 6px #003366;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  border: 2px solid #000; 
 }
 
 .cell:hover {
   background-color: #2596be;
 }
 
-/* Disc Style */
+
 .disc {
   width: 52px;
   height: 52px;
@@ -104,13 +105,13 @@ body, html, #root {
 
 
 .reset-button {
-  margin-top: 1rem;
+
   padding: 0.6rem 1.2rem;
   font-family: 'Press Start 2P', cursive;
   font-size: 0.6rem;
   background-color: #b5b80e;
   border: none;
-  border-radius: 6px;
+
   color: #000;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -118,6 +119,26 @@ body, html, #root {
 
 .reset-button:hover {
   background-color: #d4d60c;
+}
+
+.win-message {
+  font-size: 1.2rem;
+  animation: popIn 0.6s ease-out;
+  background: linear-gradient(90deg, #00ffcc, #00ccff, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px #00ffcc55;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 
@@ -129,3 +150,25 @@ body, html, #root {
     transform: translateY(0);
   }
 }
+
+.mode-buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.mode-buttons button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  background: #0c0c0c;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.mode-buttons .active-mode {
+  background-color: #4caf50;
+  color: rgb(11, 11, 11);
+}
+
