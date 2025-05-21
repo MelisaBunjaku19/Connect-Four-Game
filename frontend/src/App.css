@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+
 
 * {
   margin: 0;
@@ -9,7 +11,8 @@
 body, html, #root {
   height: 100%;
   background: #222 !important;
-  font-family: 'Press Start 2P', cursive, monospace;
+  font-family: 'Silkscreen', sans-serif;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +110,8 @@ body, html, #root {
 .reset-button {
 
   padding: 0.6rem 1.2rem;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Silkscreen', sans-serif;
+
   font-size: 0.6rem;
   background-color: #b5b80e;
   border: none;
