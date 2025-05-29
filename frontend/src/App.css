@@ -18,7 +18,7 @@ body, html, #root {
 
 
 h1 {
-color:#077bee;
+color:#248bf3;
 
  
 }
@@ -32,7 +32,7 @@ color:#077bee;
   text-align: center !important;
   max-width: 900px !important;
   box-shadow: none !important;
-  border: none !important;
+
 }
 
 .app-container::before,
@@ -44,7 +44,7 @@ color:#077bee;
 .status {
   margin-bottom: 1rem;
   font-size: 1rem;
-  color: #eee;
+  color: #fff;
 }
 
 
@@ -53,8 +53,9 @@ color:#077bee;
   grid-template-rows: repeat(6, 60px);
   gap: 8px;
   background-color: transparent;
-  padding: 10px;
+  padding-bottom: 10px;
   width: 800px !important;
+
 }
 
 .board-row {
@@ -104,55 +105,50 @@ color:#077bee;
 .reset-button {
   padding: 0.8rem 5rem;
   font-family: 'Silkscreen', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
-  background-color: #4caf50;
+  background: linear-gradient(135deg, #4caf50,#4caf50);
   border: none;
-  border-radius: 90px;
+  border-radius: 50px;
   color: #000;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(76, 175, 80, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reset-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.reset-button:hover::before {
+  left: 130%;
 }
 
 .reset-button:hover {
-  background-color: #45a049;
+  background: linear-gradient(135deg, #4caf50, #4caf50);
   transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(76, 175, 80, 0.4);
 }
 
 .reset-button:active {
   transform: scale(0.95);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
 }
 
-
-.reset-button::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
-  background-position: center;
-  transform: scale(10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 1s;
-  pointer-events: none;
-}
-
-.reset-button:active::after {
-  transform: scale(0);
-  opacity: 0.3;
-  transition: 0s;
-}
-
-
-
-.reset-button:focus,
-.reset-button:active {
+.reset-button:focus {
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
 }
 
 .win-message {
@@ -178,7 +174,7 @@ color:#077bee;
 
 @keyframes drop {
   from {
-    transform: translateY(-60px);
+    transform: translateY(var(--drop-from, -60px));
   }
   to {
     transform: translateY(0);
@@ -214,3 +210,33 @@ color:#077bee;
   color: rgb(11, 11, 11);
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: rgb(248, 248, 250);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.countdown-text {
+  animation: pop 0.4s ease-in-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
