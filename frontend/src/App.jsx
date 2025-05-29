@@ -3,13 +3,16 @@ import axios from 'axios';
 import confetti from 'canvas-confetti';
 import './App.css';
 
+import { FaCircle } from "react-icons/fa";
+
+import { FiRefreshCcw } from "react-icons/fi"; 
+
 function App() {
   const [board, setBoard] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [winner, setWinner] = useState(0);
-  const [mode, setMode] = useState("human"); 
+  const [mode, setMode] = useState("human");
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     axios.get('http://localhost:8000/board')
@@ -19,7 +22,6 @@ function App() {
         setMode(res.data.mode || "human");
       });
   }, []);
-
 
   useEffect(() => {
     if (winner !== 0) {
@@ -68,7 +70,7 @@ function App() {
     axios.post('http://localhost:8000/mode', { mode: newMode }).then(res => {
       if (res.data.status === 'ok') {
         setMode(newMode);
-        handleReset(); 
+        handleReset();
       } else {
         alert(res.data.message);
       }
@@ -77,22 +79,12 @@ function App() {
 
   return (
     <div className="app-container">
-     
 
-      <div className="mode-buttons">
-        <button
-          className={mode === "human" ? "active-mode" : ""}
-          onClick={() => switchMode("human")}
-        >
-          2 Player
-        </button>
-        <button
-          className={mode === "bot" ? "active-mode" : ""}
-          onClick={() => switchMode("bot")}
-        >
-          Player vs Bot
-        </button>
-      </div>
+      <h1 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+        <FaCircle color="red" size={40} />
+        PLAY
+        <FaCircle color="gold" size={40} />
+      </h1>
 
       <div className={`status ${winner ? 'win-message' : ''}`}>
         {winner ? `🎉 Player ${winner} wins! 🎉` : `Current Player: ${currentPlayer}`}
@@ -114,10 +106,32 @@ function App() {
         ))}
       </div>
 
-      <button className="reset-button" onClick={handleReset}>
-        Reset Game
-      </button>
+
+
+
+   
+<div className="mode-buttons" style={{ marginTop: '1rem' }}>
+  <button
+    className={mode === "human" ? "active-mode" : ""}
+    onClick={() => switchMode("human")}
+  >
+    2 Players
+  </button>
+  <button
+    className={mode === "bot" ? "active-mode" : ""}
+    onClick={() => switchMode("bot")}
+  >
+    Player vs Bot
+  </button>
+</div>
+
+<button className="reset-button" onClick={handleReset} title="Reset Game">
+  <FiRefreshCcw size={24} />
+</button>
     </div>
+
+
+
   );
 }
 

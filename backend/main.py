@@ -24,10 +24,8 @@ game_mode = "human"
 class Move(BaseModel):
     column: int
     player: int
-
 class Mode(BaseModel):
     mode: str
-
 
 @app.get("/board")
 def get_board():
@@ -77,7 +75,7 @@ def set_mode(mode: Mode):
     return {"status": "ok", "mode": game_mode}
 
 
-# Core logic
+
 def apply_move(column: int, player: int):
     global current_winner
     for row in reversed(range(ROWS)):
